@@ -285,7 +285,7 @@ function copyText(text, btn){
 document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',()=>copyText(document.getElementById(b.dataset.copy).textContent,b)));
 
 // Адрес веб-приложения Google Apps Script (см. README). Пока пусто, форма работает в режиме «скопировать текст».
-const LEAD_ENDPOINT = '';
+const LEAD_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxi2GZrT2gHjZ-CwWdT16-p8RioF2BvnlGEs3C2yGWriyLr_9otLHngXc57De_hNPNI/exec';
 
 const form=document.getElementById('brief');
 const statusEl=document.getElementById('f-status');
