@@ -161,12 +161,11 @@ details p{margin:10px 0 0;color:var(--muted);max-width:62ch}
 .ch span{font-size:var(--s-1);color:var(--muted)}
 .ch code{font-family:var(--f-mono);font-size:.95rem;color:var(--ink);user-select:all;word-break:break-all}
 .copy{font:600 .78rem var(--f-body);background:none;border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:7px 12px;cursor:pointer;flex-shrink:0}
-.brief{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:28px;display:flex;flex-direction:column;gap:16px}
-.brief label{display:flex;flex-direction:column;gap:6px;font-size:var(--s-1);font-weight:500}
-.brief input,.brief select,.brief textarea{font:400 var(--s0) var(--f-body);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:12px 14px;width:100%}
-.brief textarea{min-height:120px;resize:vertical}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.out{font-family:var(--f-mono);font-size:.82rem;background:var(--bg);border:1px dashed var(--line);border-radius:8px;padding:14px;white-space:pre-wrap;color:var(--ink)}
+.msg{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:28px;display:flex;flex-direction:column;gap:18px}
+.msg h3{font-size:var(--s1);font-weight:600}
+.msg ol{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:8px;color:var(--muted)}
+.msg ol b{color:var(--ink);font-weight:600}
+.btn.tg{font-size:1.05rem;padding:17px 26px;align-self:flex-start}
 .note{font-size:var(--s-1);color:var(--muted);margin:0}
 
 footer{border-top:1px solid var(--line);padding-block:28px 40px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--muted);font-size:var(--s-1)}
@@ -180,12 +179,12 @@ footer{border-top:1px solid var(--line);padding-block:28px 40px;display:flex;jus
   .why{grid-template-columns:1fr;gap:28px}
 }
 @media (max-width:560px){
-  .ledger,.steps,.row2{grid-template-columns:1fr}
+  .ledger,.steps{grid-template-columns:1fr}
   .svc:nth-child(even){padding-left:0;border-left:0}
   .svc{padding-right:0}
   nav ul{display:none}
   section{padding-block:56px}
-  .brief{padding:20px}
+  .msg{padding:20px}
 }
 @media (prefers-reduced-motion:reduce){.cursor{animation:none}.btn:hover{transform:none}}
 </style>
@@ -210,7 +209,7 @@ footer{border-top:1px solid var(--line);padding-block:28px 40px;display:flex;jus
       <h1>Вы описываете задачу. Мы <mark>делаем</mark> её за дни, а не за месяцы.</h1>
       <p class="lead">Создаём сайты, Telegram-ботов и автоматизацию, разбираем данные, пишем тексты. Работаем онлайн по всей России: человек отвечает за смысл и качество, ИИ берёт на себя объём.</p>
       <div class="cta">
-        <a class="btn primary" href="#contact">Обсудить задачу →</a>
+        <a class="btn primary" href="https://t.me/egr_zmcv" target="_blank" rel="noopener">Написать в Telegram →</a>
         <a class="btn ghost" href="#services">Что мы умеем</a>
       </div>
       <div class="duo">
@@ -288,88 +287,42 @@ footer{border-top:1px solid var(--line);padding-block:28px 40px;display:flex;jus
     <div class="contact">
       <div>
         <span class="eyebrow">Связаться</span>
-        <h2>Расскажите о задаче</h2>
-        <p class="note" style="margin-top:14px">Ответим в течение дня. Первая консультация бесплатно.</p>
+        <h2>Напишите нам в Telegram</h2>
+        <p class="note" style="margin-top:14px">Отвечаем в течение дня. Первая консультация бесплатно.</p>
         <div class="channels">
-          <div class="ch"><div><span>Telegram · <a href="https://t.me/egr_zmcv" target="_blank" rel="noopener">открыть чат</a></span><br><code id="c-tg">@egr_zmcv</code></div><button class="copy" data-copy="c-tg" type="button">Копировать</button></div>
+          <div class="ch"><div><span>Telegram</span><br><code id="c-tg">@egr_zmcv</code></div><button class="copy" data-copy="c-tg" type="button">Копировать</button></div>
           <div class="ch"><div><span>Почта</span><br><code id="c-mail">egorzemtsov11@gmail.com</code></div><button class="copy" data-copy="c-mail" type="button">Копировать</button></div>
         </div>
       </div>
-      <form class="brief" id="brief" novalidate>
-        <div class="row2">
-          <label for="f-name">Как вас зовут<input id="f-name" name="name" placeholder="Анна" autocomplete="name" required maxlength="100"></label>
-          <label for="f-contact">Как с вами связаться<input id="f-contact" name="contact" placeholder="@telegram, телефон или почта" required maxlength="150"></label>
-        </div>
-        <label for="f-type">Что нужно
-          <select id="f-type" name="type">
-            <option>Сайт или лендинг</option><option>Автоматизация</option><option>Бот или интеграция</option><option>Доработка кода</option><option>Анализ данных или дашборд</option><option>Тексты или перевод</option><option>Презентация или документ</option><option>Исследование</option><option>Другое</option>
-          </select>
-        </label>
-        <label for="f-text">Опишите задачу<textarea id="f-text" name="text" placeholder="Например: нужен сайт для студии маникюра с ценами и записью через Telegram" required maxlength="3000"></textarea></label>
-        <input type="text" id="f-site" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <button class="btn primary" type="submit" id="f-send" style="align-self:flex-start">Отправить заявку</button>
-        <p class="note" id="f-status" role="status" hidden></p>
-        <div id="out" hidden>
-          <div class="out" id="out-text"></div>
-          <p class="note" style="margin-top:8px">Скопируйте этот текст и отправьте нам в Telegram или на почту.</p>
-        </div>
-      </form>
+      <div class="msg">
+        <h3>Что написать в первом сообщении</h3>
+        <ol>
+          <li><b>Что нужно сделать.</b> Своими словами, как объяснили бы знакомому.</li>
+          <li><b>К какому сроку.</b> Если срок не важен, так и напишите.</li>
+          <li><b>Примеры или ссылки.</b> Что нравится, что уже есть, на что похоже.</li>
+          <li><b>Бюджет.</b> Хотя бы примерно, чтобы предложить подходящий вариант.</li>
+        </ol>
+        <a class="btn primary tg" href="https://t.me/egr_zmcv" target="_blank" rel="noopener">Написать в Telegram →</a>
+        <p class="note">Откроется чат с @egr_zmcv. Если Telegram не открылся, скопируйте ник или почту из контактов на этой странице.</p>
+      </div>
     </div>
   </section>
 
   <footer>
     <span>© 2026 Студия Напарник</span>
+    <a href="politika.html" style="color:inherit">Политика конфиденциальности</a>
     <span>Сделано вдвоём: человеком и ИИ</span>
   </footer>
 </div>
 
 <script>
 function copyText(text, btn){
-  const done = ()=>{ const o=btn.textContent; btn.textContent='Скопировано'; setTimeout(()=>btn.textContent=o,1600); };
-  try{
-    navigator.clipboard.writeText(text).then(done).catch(()=>{ btn.textContent='Выделите текст'; });
-  }catch(e){ btn.textContent='Выделите текст'; }
+  const o=btn.textContent;
+  const done=()=>{ btn.textContent='Скопировано'; setTimeout(()=>btn.textContent=o,1600); };
+  const fail=()=>{ btn.textContent='Выделите вручную'; setTimeout(()=>btn.textContent=o,2000); };
+  try{ navigator.clipboard.writeText(text).then(done).catch(fail); }catch(e){ fail(); }
 }
 document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',()=>copyText(document.getElementById(b.dataset.copy).textContent,b)));
-
-// Адрес веб-приложения Google Apps Script (см. README). Пока пусто, форма работает в режиме «скопировать текст».
-const LEAD_ENDPOINT = '';
-
-const form=document.getElementById('brief');
-const statusEl=document.getElementById('f-status');
-const sendBtn=document.getElementById('f-send');
-function showStatus(text){ statusEl.textContent=text; statusEl.hidden=false; }
-
-form.addEventListener('submit',async e=>{
-  e.preventDefault();
-  const data={
-    name:document.getElementById('f-name').value.trim(),
-    contact:document.getElementById('f-contact').value.trim(),
-    type:document.getElementById('f-type').value,
-    text:document.getElementById('f-text').value.trim(),
-    website:document.getElementById('f-site').value
-  };
-  if(!data.name||!data.contact||!data.text){ showStatus('Заполните имя, контакт и описание задачи.'); return; }
-  const msg=`Здравствуйте! Меня зовут ${data.name}.\nКонтакт: ${data.contact}\nНужно: ${data.type}.\n\n${data.text}`;
-  const fallback=(reason)=>{
-    document.getElementById('out-text').textContent=msg;
-    document.getElementById('out').hidden=false;
-    showStatus(reason);
-  };
-  if(!LEAD_ENDPOINT){ fallback('Заявка собрана.'); return; }
-  sendBtn.disabled=true; sendBtn.textContent='Отправляем…';
-  try{
-    // text/plain без заголовков, чтобы браузер не делал предварительный CORS-запрос к Google
-    await fetch(LEAD_ENDPOINT,{method:'POST',mode:'no-cors',body:JSON.stringify(data)});
-    form.reset();
-    document.getElementById('out').hidden=true;
-    showStatus('Заявка отправлена. Ответим в течение дня.');
-    sendBtn.textContent='Отправлено';
-  }catch(err){
-    fallback('Не получилось отправить автоматически. Скопируйте текст ниже и напишите нам напрямую.');
-    sendBtn.disabled=false; sendBtn.textContent='Отправить заявку';
-  }
-});
 </script>
 
 </body>
